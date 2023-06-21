@@ -1,4 +1,4 @@
-# New-Agregator-blog
+# News-Agregator-blog
 
 Scrapes Kenyan news channels NTV and K24 after every 6 hours.
 
