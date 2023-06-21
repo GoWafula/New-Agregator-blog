@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}  Wafula's Blog</title>
+    <link rel="icon" href="{% static 'icons8.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-1OZplf/hGqwtkwsPT+IPprVooAFzHkckTdcTnvTsluAsU73Z6+MwHJW8MvqbLn6c9kzrsf33+UK02FxlL+gCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  </head>
+  <body>
+  <div class="d-flex flex-column min-vh-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Kenyan News Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+
+        <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if articles.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ posts.previous_page_number }}">&lsaquo; previous</a>
+                {% endif %}
+        
+                <span class="current-page">
+                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+                </span>
+        
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}">next &rsaquo;</a>
+                    <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        
+
+        <footer class="bg-light py-3 mt-auto">
+            <div class="container text-center">
+            <p>&copy; 2023 Wafula's Blog. All rights reserved.</p>
+        </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-/Hv/+K6+9gDjO8O5W0n49lDZcTY5r5rOi1Q/5A+hR9KX9aJ0Om3sGq3p96oNlZV25S/rn3c7HAJp61lRLPZo4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-lV2sKnO+O8V7i+fDvIzV7yb37eTc+Cf7Ku+Tbsx85tSdSA0q3i7pJLtxf4fwXPCPkI62bk8W7Ejl3PC4Ua7/ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </div>
+  </body>
+</html>
