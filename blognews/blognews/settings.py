@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'blognews.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blognews',
+        'NAME': 'yor database',
         'USER': 'postgres',
-        'PASSWORD': '1998',
+        'PASSWORD': 'your password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
